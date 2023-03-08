@@ -7,7 +7,7 @@ class Game(models.Model):
     game_type = models.CharField(max_length=255)
     court_type = models.CharField(max_length=255)
     game_score = models.IntegerField()
-    game_date = models.DateField()
+    game_date = models.DateField(auto_now_add=True)
     game_time = models.TimeField()
     game_street = models.CharField(max_length=255)
     game_city = models.CharField(max_length=255)

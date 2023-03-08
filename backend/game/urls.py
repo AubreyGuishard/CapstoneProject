@@ -1,6 +1,7 @@
 from django.urls import path, include
-from game import views
+from . import views
 
-urlpattern = [
+urlpatterns = [
+    path('', views.user_games),
     path('all/', views.get_all_games)
 ]
