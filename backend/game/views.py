@@ -1,4 +1,5 @@
 # from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -15,9 +16,11 @@ def get_all_games(request):
     serializer = GameSerializer(games, many=True)
     return Response(serializer.data)
 
-@api_view(['GET', 'POST'])
+
+@api_view(['GET', 'POST', 'DELETE'])
 @permission_classes([IsAuthenticated])
-def user_games(request):
+def user_games(request, pk):
+    games = get_object_or_404(Game, pk=pk)
     if request.method == 'POST':
         serializer = GameSerializer(data=request.data)
         if serializer.is_valid():
@@ -25,6 +28,8 @@ def user_games(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':
-        games = Game.objects.filter(user_id=request.user.id)
-        serializer = GameSerializer(games, many=True)
+        serializer = GameSerializer(games)
         return Response(serializer.data)
+    elif request.method == 'DELETE':
+        games.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

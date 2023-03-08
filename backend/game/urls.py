@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     path('', views.user_games),
+    path('<int:pk>/', views.user_games),
     path('all/', views.get_all_games)
 ]
