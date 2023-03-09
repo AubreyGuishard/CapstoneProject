@@ -3,6 +3,7 @@ from rest_framework.validators import UniqueValidator
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.contrib.auth.password_validation import validate_password
 from .models import User
+from django.shortcuts import get_object_or_404
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -54,3 +55,16 @@ class RegistrationSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+class FriendSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username']        
+    
+
+class UserSerializer(serializers.ModelSerializer):
+    friends = FriendSerializer(many=True, read_only=True)
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'friends']
+        depth = 1

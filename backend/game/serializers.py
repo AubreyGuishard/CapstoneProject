@@ -4,5 +4,5 @@ from .models import Game
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
-        fields = ['id', 'game_type', 'court_type', 'game_score', 'game_date', 'game_time', 'game_street', 'game_city', 'game_state', 'game_zipcode']
+        fields = ['id', 'type', 'court_type', 'score', 'date', 'time', 'street', 'city', 'state', 'zipcode']
         depth = 1
