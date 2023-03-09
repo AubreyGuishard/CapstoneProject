@@ -16,12 +16,22 @@ def get_all_games(request):
     serializer = GameSerializer(games, many=True)
     return Response(serializer.data)
 
+@api_view(['POST'])
+@permission_classes({IsAuthenticated})
+def post_games(request):
+  if request.method == 'POST':
+    serializer = GameSerializer(data=request.data)
+    if  serializer.is_valid(raise_exception=True):
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+    else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET', 'POST', 'DELETE'])
+@api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def user_games(request, pk):
     games = get_object_or_404(Game, pk=pk)
-    if request.method == 'POST':
+    if request.method == 'PUT':
         serializer = GameSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(user=request.user)
@@ -33,3 +43,4 @@ def user_games(request, pk):
     elif request.method == 'DELETE':
         games.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
