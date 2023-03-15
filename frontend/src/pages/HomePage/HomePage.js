@@ -27,10 +27,9 @@ useEffect(() => {
 }, []);
 
 
-const arrayForGames = games.map((games, index) => {
+const arrayForGames = games.map((games) => {
   return (
     <tr>
-      <td>{games.id}</td>
       <td>{games.type}</td>
       <td>{games.court_type}</td>
       <td>{games.score}</td>
@@ -50,7 +49,6 @@ const arrayForGames = games.map((games, index) => {
       {/* <h1>Home Page for {user.username}!</h1> */}
       {/* <Link to="/postgame">Create a Game!</Link> */}
       <tr>
-        <th>Id</th>
         <th>type</th>
         <th>court type</th>
         <th>score</th>

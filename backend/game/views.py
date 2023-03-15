@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import Game
+from .models import User
 from .serializers import GameSerializer
 # Create your views here.
 
@@ -27,10 +28,10 @@ def post_games(request):
     else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET', 'PUT', 'DELETE', 'PATCH'])
 @permission_classes([IsAuthenticated])
 def user_games(request, pk):
-    games = get_object_or_404(Game, pk=pk)
+    game = get_object_or_404(Game, pk=pk)
     if request.method == 'PUT':
         serializer = GameSerializer(data=request.data)
         if serializer.is_valid():
@@ -38,9 +39,17 @@ def user_games(request, pk):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':
-        serializer = GameSerializer(games)
+        serializer = GameSerializer(game)
         return Response(serializer.data)
     elif request.method == 'DELETE':
-        games.delete()
+        game.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-    
+    elif request.method == 'PATCH':
+        user = get_object_or_404(User, id=request.user.id)
+        if game.attendees.contains(user):
+            game.attendees.remove(user)
+        else:
+            game.attendees.add(user)
+        serializer = GameSerializer(game)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)        
+        

@@ -13,3 +13,4 @@ class Game(models.Model):
     city = models.CharField(max_length=255)
     state = models.CharField(max_length=255)
     zipcode = models.IntegerField()
+    attendees = models.ManyToManyField(User, related_name='attendees', blank=True)
