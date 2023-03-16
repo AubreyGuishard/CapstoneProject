@@ -26,12 +26,12 @@ class RegisterView(generics.CreateAPIView):
 def user_details(request):
     user = get_object_or_404(User, id=request.user.id)
     if request.method == 'GET':  
-        serializer = UserSerializer(user)
+        serializer = RegistrationSerializer(user)
         return Response(serializer.data)
     elif request.method == 'PUT':
         user.friends.clear()
         user.friends.add(*request.data['friends'])
-        serializer = UserSerializer(user, data=request.data)
+        serializer = RegistrationSerializer(user, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)

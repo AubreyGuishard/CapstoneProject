@@ -29,10 +29,12 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
+        friends = serializers.ReadOnlyField()
         # If added new columns through the User model, add them in the fields
         # list as seen below
         fields = ('username', 'password', 'email',
-                  'first_name', 'last_name', 'street', 'city', 'state', 'zipcode')
+                  'first_name', 'last_name', 'street', 'city', 'state', 'zipcode', 'friends')
+        depth=1
 
     def create(self, validated_data):
 

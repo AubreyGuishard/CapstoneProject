@@ -14,4 +14,9 @@ class User(AbstractUser):
     # Example (note import of models above that is commented out)
     # this will add a column to the user table
     # is_student = models.BooleanField('student status', default=False)
-    friends = models.ManyToManyField('self', related_name='user_friends', symmetrical=False, blank=True)
+    street = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=255)
+    zipcode = models.IntegerField()
+    friends = models.ManyToManyField('self',related_name='friends_list')
+  

@@ -13,7 +13,7 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
-
+import Dashboard from "./components/Dashboard/Dashboard";
 function App() {
   return (
     <div>
@@ -23,6 +23,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/postgame" element={<PrivateRoute><AddGamePage /></PrivateRoute>} />
+        <Route path="/user" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
       </Routes>
       <Footer />
     </div>
