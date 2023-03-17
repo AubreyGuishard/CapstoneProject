@@ -22,6 +22,15 @@ const UserNavBar = () => {
 
                 </li>
             </ul>
+            <div>
+                <ul>
+                    <li  className='userGames'>
+                        <Link to="/yourgames">
+                            <b>User Game Page</b>
+                        </Link>
+                    </li>
+                </ul>
+            </div>
 
         </div>
      );

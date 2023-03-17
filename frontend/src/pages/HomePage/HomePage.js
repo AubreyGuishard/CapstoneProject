@@ -6,6 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import NewGameForm from "../../components/NewGameForm/NewGameForm";
 import UserNavBar from "../../components/UserNavBar/UserNavBar";
+import UserGames from "../../components/UserGames/UserGames";
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -13,18 +14,19 @@ const HomePage = () => {
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
  
   const [games, setGames] = useState([]);
+  
 
 useEffect(() => {
   const fetchAllGames = async () => {
     try {
-      let response = await axios.get("http://127.0.0.1:8000/api/game/all/")
-      console.log(response.data)
+      let response = await axios.get("http://127.0.0.1:8000/api/game/all/");
+     
       setGames(response.data)
     }
     catch (error) {
       console.log(error.response.data)
     }
-  }
+  };
   fetchAllGames();
 }, []);
 
@@ -64,7 +66,9 @@ const arrayForGames = games.map((games) => {
         <th>Zipcode</th>
       </tr>
       {arrayForGames}
+      
     </div>
+   
   );
 };
 

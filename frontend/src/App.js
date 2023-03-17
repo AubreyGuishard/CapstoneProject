@@ -14,6 +14,7 @@ import Footer from "./components/Footer/Footer";
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 import Dashboard from "./components/Dashboard/Dashboard";
+import UserGames from "./components/UserGames/UserGames";
 function App() {
   return (
     <div>
@@ -24,9 +25,11 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/postgame" element={<PrivateRoute><AddGamePage /></PrivateRoute>} />
         <Route path="/user" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+        <Route path="/yourgames" element={<PrivateRoute><UserGames /></PrivateRoute>} />
       </Routes>
       <Footer />
     </div>
+
   );
 }
 

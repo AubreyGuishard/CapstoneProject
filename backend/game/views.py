@@ -28,6 +28,7 @@ def post_games(request):
     else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 @api_view(['GET', 'PUT', 'DELETE', 'PATCH'])
 @permission_classes([IsAuthenticated])
 def user_games(request, pk):
