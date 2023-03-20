@@ -7,6 +7,12 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import AddGamePage from "./pages/AddGamePage/AddGamePage";
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import '@fullcalendar/core/main.css';
+import '@fullcalendar/daygrid/main.css';
+import '@fullcalendar/timgrid/main.css';
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";

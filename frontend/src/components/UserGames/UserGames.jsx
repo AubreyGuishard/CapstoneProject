@@ -33,7 +33,7 @@ useEffect(() => {
             <td>{game.street}</td>
             <td>{game.zipcode}</td>
           </tr> )
-          setThing(results )
+          setThing(results)
        
         setGamesHook(response.data)
       }
