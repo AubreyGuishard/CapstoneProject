@@ -7,12 +7,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import AddGamePage from "./pages/AddGamePage/AddGamePage";
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import interactionPlugin from '@fullcalendar/interaction';
-import '@fullcalendar/core/main.css';
-import '@fullcalendar/daygrid/main.css';
-import '@fullcalendar/timgrid/main.css';
+
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
@@ -21,6 +16,7 @@ import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./utils/PrivateRoute";
 import Dashboard from "./components/Dashboard/Dashboard";
 import UserGames from "./components/UserGames/UserGames";
+import CalendarForUser from "./components/CalendarForUser/CalendarForUser";
 function App() {
   return (
     <div>
@@ -32,6 +28,7 @@ function App() {
         <Route path="/postgame" element={<PrivateRoute><AddGamePage /></PrivateRoute>} />
         <Route path="/user" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
         <Route path="/yourgames" element={<PrivateRoute><UserGames /></PrivateRoute>} />
+        <Route path="/gamescalendar" element={<PrivateRoute><CalendarForUser /></PrivateRoute>} />
       </Routes>
       <Footer />
     </div>
