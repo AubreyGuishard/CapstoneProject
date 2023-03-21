@@ -7,7 +7,7 @@ import axios from "axios";
 import NewGameForm from "../../components/NewGameForm/NewGameForm";
 import UserNavBar from "../../components/UserNavBar/UserNavBar";
 import UserGames from "../../components/UserGames/UserGames";
-
+import JoinGame from "../../components/JoinGame/JoinGame";
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
@@ -43,6 +43,7 @@ const arrayForGames = games.map((games) => {
       <td>{games.state}</td>
       <td>{games.street}</td>
       <td>{games.zipcode}</td>
+      <td>{<button onClick={JoinGame}>Join Game!</button>}</td>
     </tr>
   )
 })
@@ -66,6 +67,7 @@ const arrayForGames = games.map((games) => {
         <th>Zipcode</th>
       </tr>
       {arrayForGames}
+    
       
     </div>
    

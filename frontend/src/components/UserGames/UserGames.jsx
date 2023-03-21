@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import CalendarForUser from '../CalendarForUser/CalendarForUser';
+import JoinGame from '../JoinGame/JoinGame';
 const UserGames = () => {
 const [user, token] = useAuth()
 const [thing , setThing] = useState()
