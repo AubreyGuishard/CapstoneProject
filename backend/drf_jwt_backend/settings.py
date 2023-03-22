@@ -57,6 +57,8 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+CORS_ALLOW_METHOD = [     'GET',    'POST',    'PUT',    'PATCH',    'DELETE',    'OPTIONS']
+
 ROOT_URLCONF = 'drf_jwt_backend.urls'
 
 TEMPLATES = [

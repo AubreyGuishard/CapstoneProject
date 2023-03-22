@@ -9,7 +9,7 @@ const JoinGame = ({game, getGame}) => {
     async function JoinGame(){
         try {
             let response = await axios.patch(
-                `http://127.0.0.1:8000/api/game/join/${game.id}/`, 
+                `http://127.0.0.1:8000/api/game/join/${game.id}/`, {},
                 {
                     headers: {
                         Authorization: "Bearer " + token
@@ -17,17 +17,18 @@ const JoinGame = ({game, getGame}) => {
                 }
             );
             if (response.status === 201) {
-                navigate('join/<int:pk>/');
+                navigate("/yourgames");
             }
         } catch(error){
-            console.log(error.formData);
+            console.log('Error Message', error.message);
+            console.log('Token', token)
         }
     }
     async function getGameById(game){
         let url = `http://127.0.0.1:8000/api/game/${game.id}/`
-        let response = await axios.get(url, user,{
+        let response = await axios.get(url,{
             headers: {
-                Authorization: "Bearer" + token
+                Authorization: "Bearer " + token
             }
         })
         setPlayers(response.data.attendees)

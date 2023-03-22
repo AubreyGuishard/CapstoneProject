@@ -28,7 +28,7 @@ useEffect(() => {
     }
   };
   fetchAllGames();
-}, [games]);
+}, []);
 
 
 const arrayForGames = games.map((game) => {
