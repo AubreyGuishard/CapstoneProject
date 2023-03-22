@@ -28,23 +28,23 @@ useEffect(() => {
     }
   };
   fetchAllGames();
-}, []);
+}, [games]);
 
 
-const arrayForGames = games.map((games) => {
+const arrayForGames = games.map((game) => {
   return (
-    <tr>
-      <td>{games.type}</td>
-      <td>{games.court_type}</td>
-      <td>{games.score}</td>
-      <td>{games.time}</td>
-      <td>{games.date}</td>
-      <td>{games.city}</td>
-      <td>{games.state}</td>
-      <td>{games.street}</td>
-      <td>{games.zipcode}</td>
-      <td>{<button onClick={JoinGame}>Join Game!</button>}</td>
-    </tr>
+    <div>
+      <h5>{game.type}</h5>
+      <h5>{game.court_type}</h5>
+      <h5>{game.score}</h5>
+      <h5>{game.time}</h5>
+      <h5>{game.date}</h5>
+      <h5>{game.city}</h5>
+      <h5>{game.state}</h5>
+      <h5>{game.street}</h5>
+      <h5>{game.zipcode}</h5>
+      <JoinGame game={game} />
+    </div>
   )
 })
 

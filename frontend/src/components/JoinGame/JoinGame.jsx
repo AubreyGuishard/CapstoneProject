@@ -9,10 +9,10 @@ const JoinGame = ({game, getGame}) => {
     async function JoinGame(){
         try {
             let response = await axios.patch(
-                `http://127.0.0.1:8000/api/game/join/${game.id}/`,
+                `http://127.0.0.1:8000/api/game/join/${game.id}/`, 
                 {
                     headers: {
-                        Authorization: "Bearer" + token
+                        Authorization: "Bearer " + token
                     }
                 }
             );
@@ -23,21 +23,36 @@ const JoinGame = ({game, getGame}) => {
             console.log(error.formData);
         }
     }
+    async function getGameById(game){
+        let url = `http://127.0.0.1:8000/api/game/${game.id}/`
+        let response = await axios.get(url, user,{
+            headers: {
+                Authorization: "Bearer" + token
+            }
+        })
+        setPlayers(response.data.attendees)
+    }
+
 
     async function handleJoinGame() {
         if (token){
             JoinGame(user)
-            setPlayers(game.attendees)
+            getGameById(game)
         }
         else {
             alert("Must be signed in to join game.")
-            navigate("/login")
+            
         }
+    }
+
+    async function handleCantJoinGame(){
+        alert("Must be signed in to join")
+        navigate("/login")
     }
 
     return ( 
         <div>
-            {<button onClick={handleJoinGame}>Join Game!</button>}
+            {user ? <button onClick={handleJoinGame}>Join Game!</button>: <button onClick={handleCantJoinGame}> Join Game! </button>}
         </div>
      );
 }
