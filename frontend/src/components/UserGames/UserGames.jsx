@@ -23,18 +23,18 @@ useEffect(() => {
             return is_here
         }
 
-        ).map(game =>   <tr key={game.id}>
+        ).map(game =>   <div key={game.id}>
             {console.log(game)}
-            <td>{game.type}</td>
-            <td>{game.court_type}</td>
-            <td>{game.score}</td>
-            <td>{game.time}</td>
-            <td>{game.date}</td>
-            <td>{game.city}</td>
-            <td>{game.state}</td>
-            <td>{game.street}</td>
-            <td>{game.zipcode}</td>
-          </tr> )
+            <h5>{game.type}</h5>
+            <h5>{game.court_type}</h5>
+            <h5>{game.score}</h5>
+            <h5>{game.time}</h5>
+            <h5>{game.date}</h5>
+            <h5>{game.city}</h5>
+            <h5>{game.state}</h5>
+            <h5>{game.street}</h5>
+            <h5>{game.zipcode}</h5>
+          </div> )
           setThing(results)
        
         setGamesHook(response.data)
