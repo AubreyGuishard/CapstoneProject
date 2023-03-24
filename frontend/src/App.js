@@ -18,6 +18,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import UserGames from "./components/UserGames/UserGames";
 import CalendarForUser from "./components/CalendarForUser/CalendarForUser";
 import JoinGame from "./components/JoinGame/JoinGame";
+import UserFriends from "./components/UserFriends/UserFriends";
 function App() {
   return (
     <div>
@@ -29,8 +30,10 @@ function App() {
         <Route path="/postgame" element={<PrivateRoute><AddGamePage /></PrivateRoute>} />
         <Route path="/user" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
         <Route path="/yourgames" element={<PrivateRoute><UserGames /></PrivateRoute>} />
-        <Route path="/gamescalendar" element={<PrivateRoute><CalendarForUser /></PrivateRoute>} />
-        <Route path="/join/<int:pk>/" element={<PrivateRoute><JoinGame /></PrivateRoute>} />
+        <Route path="/mycalendar" element={<PrivateRoute><CalendarForUser /></PrivateRoute>} />
+        {/* <Route path="/join/<int:pk>/" element={<PrivateRoute><JoinGame /></PrivateRoute>} /> */}
+        <Route path="/myfriends" element={<PrivateRoute><UserFriends /></PrivateRoute>} />
+
       </Routes>
       {/* <Footer /> */}
     </div>

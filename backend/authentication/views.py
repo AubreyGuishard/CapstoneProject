@@ -9,6 +9,7 @@ from rest_framework.decorators import api_view, permission_classes
 from .models import User
 from .serializers import UserSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework import status
 # User = get_user_model()
 
 
@@ -23,8 +24,8 @@ class RegisterView(generics.CreateAPIView):
 
 @api_view(['GET', 'PUT'])
 @permission_classes([IsAuthenticated])
-def user_details(request):
-    user = get_object_or_404(User, id=request.user.id)
+def user_details(request, pk):
+    user = get_object_or_404(User, pk=pk)
     if request.method == 'GET':  
         serializer = RegistrationSerializer(user)
         return Response(serializer.data)
@@ -35,4 +36,17 @@ def user_details(request):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+    
+@api_view(['PATCH'])
+@permission_classes([IsAuthenticated])
+def close_friends(request, pk):
+    if request.method == 'PATCH':
+        user = get_object_or_404(User, id=request.user.id)
+        friend = get_object_or_404(User, id=pk)
+        if user.friends.contains(friend):
+            user.friends.remove(friend)
+        else:
+            user.friends.add(friend)
+        serializer = UserSerializer(user)
+        return Response(serializer.data, status=status.HTTP_201_CREATED) 
         

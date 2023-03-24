@@ -26,8 +26,28 @@ const UserNavBar = () => {
                 <ul>
                     <li  className='userGames'>
                         <Link to="/yourgames">
-                            <b>User Game Page</b>
+                            <b>My Games</b>
                         </Link>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li className='myFriends'>
+                        <Link to="/myfriends">
+                            <b>My Friends</b>
+                        </Link>
+
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li className='myCalendar'>
+                        <Link to="mycalendar">
+                            <b>My Calendar</b>
+                        </Link>
+
                     </li>
                 </ul>
             </div>

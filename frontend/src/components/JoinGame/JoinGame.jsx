@@ -18,7 +18,7 @@ const JoinGame = ({game, getGame}) => {
             );
             if (response.status === 201) {
                 navigate("/yourgames");
-                alert("You have joined the game")
+                // alert("You have joined the game")
             }
         } catch(error){
             console.log('Error Message', error.message);

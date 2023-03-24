@@ -18,5 +18,5 @@ class User(AbstractUser):
     city = models.CharField(max_length=255)
     state = models.CharField(max_length=255)
     zipcode = models.IntegerField()
-    friends = models.ManyToManyField('self',related_name='friends_list')
+    friends = models.ManyToManyField('self',related_name='friends_list', blank=True)
   
