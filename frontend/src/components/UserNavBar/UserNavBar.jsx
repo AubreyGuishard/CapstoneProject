@@ -16,7 +16,7 @@ const UserNavBar = () => {
             </ul>
             <ul>
                 <li className='postgame'>
-                    <Link to="/postgame">
+                    <Link to="/postgame/">
                         <b>Post Game</b>
                     </Link>
 
@@ -25,7 +25,7 @@ const UserNavBar = () => {
             <div>
                 <ul>
                     <li  className='userGames'>
-                        <Link to="/yourgames">
+                        <Link to="/yourgames/">
                             <b>My Games</b>
                         </Link>
                     </li>
@@ -34,7 +34,7 @@ const UserNavBar = () => {
             <div>
                 <ul>
                     <li className='myFriends'>
-                        <Link to="/myfriends">
+                        <Link to="/myfriends/">
                             <b>My Friends</b>
                         </Link>
 
@@ -44,7 +44,7 @@ const UserNavBar = () => {
             <div>
                 <ul>
                     <li className='myCalendar'>
-                        <Link to="mycalendar">
+                        <Link to="mycalendar/">
                             <b>My Calendar</b>
                         </Link>
 

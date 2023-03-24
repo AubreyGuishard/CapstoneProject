@@ -55,7 +55,7 @@ const arrayForGames = games.map((game) => {
       {/* <NewGameForm/> */}
       {/* <h1>Home Page for {user.username}!</h1> */}
       {/* <Link to="/postgame">Create a Game!</Link> */}
-      <tr>
+      {/* <tr>
         <th>type</th>
         <th>court type</th>
         <th>score</th>
@@ -65,9 +65,9 @@ const arrayForGames = games.map((game) => {
         <th>State</th>
         <th>Street</th>
         <th>Zipcode</th>
-      </tr>
+      </tr> */}
       {arrayForGames}
-    
+
       
     </div>
    
