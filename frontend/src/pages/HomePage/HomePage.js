@@ -8,6 +8,8 @@ import NewGameForm from "../../components/NewGameForm/NewGameForm";
 import UserNavBar from "../../components/UserNavBar/UserNavBar";
 import UserGames from "../../components/UserGames/UserGames";
 import JoinGame from "../../components/JoinGame/JoinGame";
+import PlayerList from "../../components/PlayerList/PlayerList";
+import MyFriendsList from "../../components/MyFriendsList/MyFriendsList";
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
@@ -52,6 +54,7 @@ const arrayForGames = games.map((game) => {
   return (
     <div className="container">
       <UserNavBar/>
+      <MyFriendsList/>
       {/* <NewGameForm/> */}
       {/* <h1>Home Page for {user.username}!</h1> */}
       {/* <Link to="/postgame">Create a Game!</Link> */}
@@ -67,6 +70,7 @@ const arrayForGames = games.map((game) => {
         <th>Zipcode</th>
       </tr> */}
       {arrayForGames}
+      {/* <PlayerList/> */}
 
       
     </div>
