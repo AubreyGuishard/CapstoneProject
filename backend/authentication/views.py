@@ -50,3 +50,9 @@ def close_friends(request, pk):
         serializer = UserSerializer(user)
         return Response(serializer.data, status=status.HTTP_201_CREATED) 
         
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_user_id(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    serializer = UserSerializer(user)
+    return Response(serializer.data)

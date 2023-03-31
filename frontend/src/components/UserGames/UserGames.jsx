@@ -3,9 +3,10 @@ import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import CalendarForUser from '../CalendarForUser/CalendarForUser';
 import JoinGame from '../JoinGame/JoinGame';
-const UserGames = () => {
+const UserGames = ({playerGame}) => {
 const [user, token] = useAuth()
 const [thing , setThing] = useState()
+const [username, setUsername] = useState('')
 
 const [gamesHook, setGamesHook] = useState([])
 
@@ -20,11 +21,12 @@ useEffect(() => {
                     is_here =true
                 }
             }
+
             return is_here
         }
 
-        ).map(game =>   <div key={game.id}>
-            {console.log(game)}
+        ).map(game =>   <div key={game.id}>{game.attendees.map((attendee) => <div key={attendee}>{attendee.username}</div>)}
+            {console.log('Game Attendees', game.attendees)}
             <h5>{game.type}</h5>
             <h5>{game.court_type}</h5>
             <h5>{game.score}</h5>
@@ -35,12 +37,14 @@ useEffect(() => {
             <h5>{game.street}</h5>
             <h5>{game.zipcode}</h5>
           </div> )
+          
           setThing(results)
+          // setUsername(attendees_player)
        
         setGamesHook(response.data)
       }
       catch (error) {
-        console.log(error.response.data)
+        console.log(error)
       }
     };
     fetchAllGames();
@@ -51,12 +55,11 @@ useEffect(() => {
         const yourGames = gamesHook
     },[])
   
-  
-   
+ 
     return ( 
         <section id='UserGames'>
             <h1>Your Games</h1>
-            <div className='UserGame-List'></div>
+            <div className='UserGame-List'>{username}</div>
             {thing}
         </section>
      );

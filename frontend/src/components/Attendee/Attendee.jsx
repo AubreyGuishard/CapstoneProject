@@ -9,9 +9,9 @@ const [attendees, setAttendees] = useState([])
 const fectchAttendeesFromAPI = async () => {
     let url = "http://127.0.0.1:8000/api/game/all/"
     let response = await axios.get(url)
-    setAttendees(response.data.attendees)
+    setAttendees(response.data.game.attendees)
     console.log("Attendees thingy:", fectchAttendeesFromAPI)
-    console.log("Attendees data:", response.data.attendees)
+    console.log("Attendees data:", response.data.game.attendees)
 }
 
 useEffect(() => {

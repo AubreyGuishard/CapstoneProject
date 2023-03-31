@@ -55,22 +55,7 @@ const arrayForGames = games.map((game) => {
 
   return (
     <div className="container">
-      <UserNavBar/>
-     
-      {/* <NewGameForm/> */}
-      {/* <h1>Home Page for {user.username}!</h1> */}
-      {/* <Link to="/postgame">Create a Game!</Link> */}
-      {/* <tr>
-        <th>type</th>
-        <th>court type</th>
-        <th>score</th>
-        <th>Time</th>
-        <th>Date</th>
-        <th>City</th>
-        <th>State</th>
-        <th>Street</th>
-        <th>Zipcode</th>
-      </tr> */}
+      <UserNavBar/>n 
       {arrayForGames}
       {/* <PlayerList/> */}
 
