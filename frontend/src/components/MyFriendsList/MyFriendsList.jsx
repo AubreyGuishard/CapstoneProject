@@ -16,52 +16,12 @@ const fetchDataFromAPI = async () => {
             Authorization: "Bearer " + token
         }
     })
-    setFriends(response.data.friends)
+    console.log('Friends data', response.data.friends)
 }
 
 useEffect(() => {
     fetchDataFromAPI()
 }, []);
-
-async function toggleUserFriend(){
-    try{
-       let url = `http://127.0.0.1:8000/api/auth/user/follow/${attendee.id}/`
-       let response = await axios.patch(url, {user},
-           {
-               headers: {
-                   Authorization: "Bearer " + token
-               }
-           }
-           );
-           if (response.status === 201){
-               navigate("/myfriends/")
-           }
-       console.log(response)
-    }  catch(error){
-       console.log('Error Message', error.message);
-       console.log('Token', token)
-    }
-   }
-
-
-   function handleFriend(){
-    if (token){
-        toggleUserFriend()
-        setFriends(true)
-        fetchDataFromAPI(user)
-    }
-    else{
-        navigate('/login/')
-    }
-}
-
-function handleUnfriend(){
-    if (token){
-        toggleUserFriend()
-        setFriends(false)
-        fetchDataFromAPI(user)
-    }
-}
 
 useEffect(() => {
     fetchDataFromAPI(user)
