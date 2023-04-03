@@ -49,6 +49,7 @@ def close_friends(request, pk):
             user.friends.add(friend)
         serializer = UserSerializer(user)
         return Response(serializer.data, status=status.HTTP_201_CREATED) 
+    
         
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

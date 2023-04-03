@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
-
+import MyFriends from '../MyFriends/MyFriends'
 const MyFriendsList = () => { 
 const [user, token] = useAuth()
 const [friendList, setFriendList] = useState([])
@@ -27,6 +27,7 @@ return (<ul>
 {friends.map(item => (
     <li key={item.id}>{item.username}</li>
 ))}
+{/* <MyFriends/> */}
 </ul>);
 }
 
