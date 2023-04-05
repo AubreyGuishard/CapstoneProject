@@ -32,7 +32,7 @@ return (<ul>
 {friends.map(item => (
     <li key={item.id}>{item.username}</li>
 ))}
-{/* <MyFriends/> */}
+<MyFriends/>
 </ul>);
 }
 

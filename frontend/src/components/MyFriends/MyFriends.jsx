@@ -72,8 +72,8 @@ const UserFriends = ({attendee}) => {
     }, [])
 
     return ( <div>
-        {friends ? <button onClick={handleUnfriend}>UnFriend</button>: <button onClick={handleFriend}>Friend</button>}
-        {user ? <button onClick={handleFriend}> Friend</button>: <button onClick={handleUnfriend}>UnFriend</button>}
+        {/* {friends ? <button onClick={handleUnfriend}>UnFriend</button>: <button onClick={handleFriend}>Friend</button>}
+        {user ? <button onClick={handleFriend}> Friend</button>: <button onClick={handleUnfriend}>UnFriend</button>} */}
         <MyFriendsList/>
     </div>  );
 }
